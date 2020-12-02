@@ -6,6 +6,8 @@ flow:
         do:
           io.cloudslang.base.cmd.run_command:
             - command: ipconfig
+        publish:
+          - return_result
         navigate:
           - SUCCESS: SUCCESS
           - FAILURE: on_failure
