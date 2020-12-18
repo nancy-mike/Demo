@@ -1,6 +1,6 @@
-namespace: Network
+namespace: NetworkTest
 flow:
-  name: LocalPing
+  name: Localping
   workflow:
     - run_command:
         do:
@@ -10,20 +10,20 @@ flow:
           - SUCCESS: SUCCESS
           - FAILURE: on_failure
   results:
-    - FAILURE
     - SUCCESS
+    - FAILURE
 extensions:
   graph:
     steps:
       run_command:
-        x: 209.01171875
-        'y': 166.27734375
+        x: 269.01824951171875
+        'y': 160.0390625
         navigate:
-          236c97ae-ef44-1087-5abe-94b0bf75f5c0:
-            targetId: 03fed7eb-00e0-3b3f-5d14-21ed7bc36390
+          adf320a2-6922-5a72-df07-e6eb2b2d08d9:
+            targetId: ab74a433-2710-794d-528a-e443a00ac161
             port: SUCCESS
     results:
       SUCCESS:
-        03fed7eb-00e0-3b3f-5d14-21ed7bc36390:
-          x: 385.01171875
-          'y': 142.0390625
+        ab74a433-2710-794d-528a-e443a00ac161:
+          x: 444.01824951171875
+          'y': 180.0390625
