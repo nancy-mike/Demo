@@ -6,8 +6,6 @@ flow:
         do:
           io.cloudslang.base.cmd.run_command:
             - command: ipconfig
-        publish:
-          - return_result
         navigate:
           - SUCCESS: SUCCESS
           - FAILURE: on_failure
@@ -18,14 +16,14 @@ extensions:
   graph:
     steps:
       run_command:
-        x: 320
-        'y': 127
+        x: 142.60000610351562
+        'y': 214
         navigate:
-          40317b48-2779-108b-ae63-8df769f7736a:
-            targetId: 61180d96-0005-c840-e70d-b475c33977eb
+          eb0467df-b82a-c466-1447-139cc39845d8:
+            targetId: 384c64ae-51aa-9392-9dc6-e5c153bd11f1
             port: SUCCESS
     results:
       SUCCESS:
-        61180d96-0005-c840-e70d-b475c33977eb:
-          x: 572
-          'y': 113
+        384c64ae-51aa-9392-9dc6-e5c153bd11f1:
+          x: 361.6000061035156
+          'y': 207.60000610351562
