@@ -1,15 +1,15 @@
-namespace: lab_action
+namespace: wed_action
 operation:
-  name: lab_account
+  name: register_account
   inputs:
     - url
     - username
     - password
+    - first_name
     - last_name
     - email
-    - first_name
   sequential_action:
-    gav: 'com.microfocus.seq:lab_action.lab_account:1.0.0'
+    gav: 'com.microfocus.seq:wed_action.register_account:1.0.0'
     skills:
       - Web
     settings:
@@ -17,25 +17,25 @@ operation:
         active: false
       web:
         active: true
-        address: 'http://localhost:8082'
+        address: 'http://localhost:8082/'
         browser: FIREFOX64
         close_on_exit: true
     steps:
       - step:
           id: '1'
-          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").Image("Down_arrow")'
+          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").Link("UserMenu")'
           action: Click
           snapshot: ".\\Snapshots\\ssf1.html"
           highlight_id: '10000000'
       - step:
           id: '2'
-          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").Link("UserMenu")'
+          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").Link("CREATE NEW ACCOUNT")'
           action: Click
           snapshot: ".\\Snapshots\\ssf2.html"
           highlight_id: '10000000'
       - step:
           id: '3'
-          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").Link("CREATE NEW ACCOUNT")'
+          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebElement("Username")'
           action: Click
           snapshot: ".\\Snapshots\\ssf3.html"
           highlight_id: '10000000'
@@ -43,21 +43,15 @@ operation:
           id: '4'
           object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebEdit("usernameRegisterPage")'
           action: Set
-          default_args: '"jhamseh"'
+          default_args: '"jhamesh"'
           snapshot: ".\\Snapshots\\ssf4.html"
           highlight_id: '10000000'
           args: 'Parameter("username")'
       - step:
-          id: '5'
-          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebElement("*Email")'
-          action: Click
-          snapshot: ".\\Snapshots\\ssf5.html"
-          highlight_id: '10000000'
-      - step:
           id: '6'
           object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebEdit("emailRegisterPage")'
           action: Set
-          default_args: '"halala@lala.com"'
+          default_args: '"jh@merant.com"'
           snapshot: ".\\Snapshots\\ssf6.html"
           highlight_id: '10000000'
           args: 'Parameter("email")'
@@ -65,69 +59,76 @@ operation:
           id: '7'
           object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebEdit("passwordRegisterPage")'
           action: SetSecure
-          default_args: '"123456"'
+          default_args: '"Jh0987"'
           snapshot: ".\\Snapshots\\ssf7.html"
           highlight_id: '10000000'
           args: 'Parameter("password")'
       - step:
           id: '8'
+          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebElement("Confirm password")'
+          action: Click
+          snapshot: ".\\Snapshots\\ssf8.html"
+          highlight_id: '10000000'
+      - step:
+          id: '9'
           object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebEdit("confirm_passwordRegisterPage")'
           action: SetSecure
-          default_args: '"123456"'
-          snapshot: ".\\Snapshots\\ssf8.html"
+          default_args: '"Jh0987"'
+          snapshot: ".\\Snapshots\\ssf9.html"
           highlight_id: '10000000'
           args: 'Parameter("password")'
       - step:
-          id: '14'
-          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebElement("PERSONAL DETAILS First")'
+          id: '10'
+          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebEdit("first_nameRegisterPage")'
+          action: Set
+          default_args: '"James"'
+          snapshot: ".\\Snapshots\\ssf10.html"
+          highlight_id: '10000000'
+          args: 'Parameter("first_name")'
+      - step:
+          id: '11'
+          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebElement("Last Name")'
           action: Click
+          snapshot: ".\\Snapshots\\ssf11.html"
+          highlight_id: '10000000'
+      - step:
+          id: '12'
+          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebEdit("last_nameRegisterPage")'
+          action: Set
+          default_args: '"Ho"'
+          snapshot: ".\\Snapshots\\ssf12.html"
+          highlight_id: '10000000'
+          args: 'Parameter("last_name")'
+      - step:
+          id: '13'
+          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebCheckBox("allowOffersPromotion")'
+          action: Set
+          default_args: '"OFF"'
+          snapshot: ".\\Snapshots\\ssf13.html"
+          highlight_id: '10000000'
+      - step:
+          id: '14'
+          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebCheckBox("i_agree")'
+          action: Set
+          default_args: '"ON"'
           snapshot: ".\\Snapshots\\ssf14.html"
           highlight_id: '10000000'
       - step:
           id: '15'
-          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebEdit("first_nameRegisterPage")'
-          action: Set
-          default_args: '"James Hams"'
-          snapshot: ".\\Snapshots\\ssf15.html"
-          highlight_id: '10000000'
-          args: 'Parameter("first_name")'
-      - step:
-          id: '16'
-          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebEdit("last_nameRegisterPage")'
-          action: Set
-          default_args: '"Eho"'
-          snapshot: ".\\Snapshots\\ssf16.html"
-          highlight_id: '10000000'
-          args: 'Parameter("last_name")'
-      - step:
-          id: '17'
-          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebCheckBox("i_agree")'
-          action: Set
-          default_args: '"ON"'
-          snapshot: ".\\Snapshots\\ssf17.html"
-          highlight_id: '10000000'
-      - step:
-          id: '18'
           object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebButton("register_btnundefined")'
           action: Click
-          snapshot: ".\\Snapshots\\ssf18.html"
+          snapshot: ".\\Snapshots\\ssf15.html"
           highlight_id: '10000000'
       - step:
-          id: '19'
+          id: '16'
           object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping")'
           action: Sync
       - step:
-          id: '20'
+          id: '17'
           object_path: 'Browser("Advantage Shopping")'
           action: Back
-          snapshot: ".\\Snapshots\\ssf19.png"
-          highlight_id: '66568'
-      - step:
-          id: '21'
-          object_path: 'Browser("Advantage Shopping").Page("Advantage Shopping").WebElement("LAPTOPS Shop Now MICE")'
-          action: Click
-          snapshot: ".\\Snapshots\\ssf20.html"
-          highlight_id: '10000000'
+          snapshot: ".\\Snapshots\\ssf16.png"
+          highlight_id: '328568'
   outputs:
     - return_result: '${return_result}'
     - error_message: '${error_message}'
@@ -182,12 +183,12 @@ object_repository:
                           - acc_name
                       algorithm: Mercury.TolerantPriority
                       active: true
-                    name: PERSONAL DETAILS First
+                    name: Username
                     child_objects: []
                     properties:
                       - property:
                           value:
-                            value: '912'
+                            value: '72'
                             regular_expression: false
                           name: width
                           hidden: true
@@ -203,7 +204,7 @@ object_repository:
                           type: BOOL
                       - property:
                           value:
-                            value: '410'
+                            value: '300'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -211,7 +212,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '319'
+                            value: '611'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -227,149 +228,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: PERSONAL DETAILS First Name- Use 2 character or longer - Use maximum 30 character Last Name- Use 2 character or longer - Use maximum 30 character Phone Number- Use maximum 20 character
-                            regular_expression: false
-                          name: innertext
-                          hidden: false
-                          read_only: false
-                          type: STRING
-                      - property:
-                          value:
-                            value: DIV
-                            regular_expression: false
-                          name: html tag
-                          hidden: false
-                          read_only: false
-                          type: STRING
-                      - property:
-                          value:
-                            value: ''
-                            regular_expression: false
-                          name: html id
-                          hidden: true
-                          read_only: true
-                          type: STRING
-                      - property:
-                          value:
-                            value: '150'
-                            regular_expression: false
-                          name: height
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                      - property:
-                          value:
-                            value: ''
-                            regular_expression: false
-                          name: class
-                          hidden: true
-                          read_only: true
-                          type: STRING
-                      - property:
-                          value:
-                            value: ''
-                            regular_expression: false
-                          name: acc_name
-                          hidden: true
-                          read_only: true
-                          type: STRING
-                      - property:
-                          value:
-                            value: '506'
-                            regular_expression: false
-                          name: abs_y
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                      - property:
-                          value:
-                            value: '320'
-                            regular_expression: false
-                          name: abs_x
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                      - property:
-                          value:
-                            value: '//DIV[@id="formCover"]/DIV[2]'
-                            regular_expression: false
-                          name: _xpath
-                          hidden: true
-                          read_only: true
-                          type: STRING
-                    comments: ''
-                    custom_replay: ''
-                    class: WebElement
-                    visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
-                    basic_identification:
-                      property_ref:
-                        - micclass
-                        - innertext
-                        - html tag
-                        - _xpath
-                      ordinal_identifier: ''
-                - object:
-                    smart_identification:
-                      base_filter:
-                        property_ref:
-                          - micclass
-                          - html tag
-                      optional_filter:
-                        property_ref:
-                          - html id
-                          - class
-                          - innertext
-                          - visible
-                          - acc_name
-                      algorithm: Mercury.TolerantPriority
-                      active: true
-                    name: One upper letter required
-                    child_objects: []
-                    properties:
-                      - property:
-                          value:
-                            value: '186'
-                            regular_expression: false
-                          name: width
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                      - property:
-                          value:
-                            value: '-1'
-                            regular_expression: false
-                          name: visible
-                          hidden: true
-                          read_only: true
-                          type: BOOL
-                      - property:
-                          value:
-                            value: '341'
-                            regular_expression: false
-                          name: view_y
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                      - property:
-                          value:
-                            value: '319'
-                            regular_expression: false
-                          name: view_x
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                      - property:
-                          value:
-                            value: WebElement
-                            regular_expression: false
-                          name: micclass
-                          hidden: true
-                          read_only: true
-                          type: STRING
-                      - property:
-                          value:
-                            value: One upper letter required
+                            value: Username
                             regular_expression: false
                           name: innertext
                           hidden: false
@@ -393,7 +252,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '21'
+                            value: '22'
                             regular_expression: false
                           name: height
                           hidden: true
@@ -401,7 +260,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: animated invalid
+                            value: ''
                             regular_expression: false
                           name: class
                           hidden: true
@@ -417,7 +276,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '437'
+                            value: '432'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -425,7 +284,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '320'
+                            value: '611'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -433,7 +292,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '//DIV[@id="formCover"]/DIV[1]/DIV[2]/SEC-VIEW[1]/DIV[1]/LABEL[1]'
+                            value: '//SEC-VIEW/DIV/LABEL[normalize-space()="Username"]'
                             regular_expression: false
                           name: _xpath
                           hidden: true
@@ -443,7 +302,7 @@ object_repository:
                     custom_replay: ''
                     class: WebElement
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -466,12 +325,12 @@ object_repository:
                           - acc_name
                       algorithm: Mercury.TolerantPriority
                       active: true
-                    name: LAPTOPS Shop Now MICE
+                    name: Last Name
                     child_objects: []
                     properties:
                       - property:
                           value:
-                            value: '1261'
+                            value: '78'
                             regular_expression: false
                           name: width
                           hidden: true
@@ -487,7 +346,7 @@ object_repository:
                           type: BOOL
                       - property:
                           value:
-                            value: '342'
+                            value: '507'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -495,7 +354,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '0'
+                            value: '1051'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -511,7 +370,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: LAPTOPS Shop Now MICE Shop Now HEADPHONES Shop Now
+                            value: Last Name
                             regular_expression: false
                           name: innertext
                           hidden: false
@@ -519,7 +378,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: DIV
+                            value: LABEL
                             regular_expression: false
                           name: html tag
                           hidden: false
@@ -535,7 +394,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '277'
+                            value: '22'
                             regular_expression: false
                           name: height
                           hidden: true
@@ -543,7 +402,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: rowSection
+                            value: ''
                             regular_expression: false
                           name: class
                           hidden: true
@@ -559,7 +418,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '438'
+                            value: '603'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -567,7 +426,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '1'
+                            value: '1051'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -575,7 +434,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '//ARTICLE[@id="our_products"]/DIV[2]/DIV[2]'
+                            value: '//SEC-VIEW/DIV/LABEL[normalize-space()="Last Name"]'
                             regular_expression: false
                           name: _xpath
                           hidden: true
@@ -585,7 +444,7 @@ object_repository:
                     custom_replay: ''
                     class: WebElement
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -608,12 +467,12 @@ object_repository:
                           - acc_name
                       algorithm: Mercury.TolerantPriority
                       active: true
-                    name: '*Email'
+                    name: Confirm password
                     child_objects: []
                     properties:
                       - property:
                           value:
-                            value: '330'
+                            value: '130'
                             regular_expression: false
                           name: width
                           hidden: true
@@ -629,7 +488,7 @@ object_repository:
                           type: BOOL
                       - property:
                           value:
-                            value: '278'
+                            value: '358'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -637,7 +496,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '733'
+                            value: '1051'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -653,7 +512,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '*Email'
+                            value: Confirm password
                             regular_expression: false
                           name: innertext
                           hidden: false
@@ -661,7 +520,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: DIV
+                            value: LABEL
                             regular_expression: false
                           name: html tag
                           hidden: false
@@ -677,7 +536,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '54'
+                            value: '22'
                             regular_expression: false
                           name: height
                           hidden: true
@@ -685,7 +544,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: inputContainer ng-scope
+                            value: ''
                             regular_expression: false
                           name: class
                           hidden: true
@@ -701,7 +560,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '374'
+                            value: '454'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -709,7 +568,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '734'
+                            value: '1051'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -717,7 +576,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '//SEC-VIEW/DIV[normalize-space()="*Email"]'
+                            value: '//SEC-VIEW/DIV/LABEL[normalize-space()="Confirm password"]'
                             regular_expression: false
                           name: _xpath
                           hidden: true
@@ -727,7 +586,7 @@ object_repository:
                     custom_replay: ''
                     class: WebElement
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -775,7 +634,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '330'
+                            value: '357'
                             regular_expression: false
                           name: width
                           hidden: true
@@ -783,7 +642,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '300'
+                            value: '302'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -791,7 +650,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '319'
+                            value: '611'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -855,7 +714,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '25'
+                            value: '26'
                             regular_expression: false
                           name: height
                           hidden: true
@@ -887,7 +746,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '396'
+                            value: '434'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -895,7 +754,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '320'
+                            value: '611'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -905,7 +764,7 @@ object_repository:
                     custom_replay: ''
                     class: WebEdit
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -954,7 +813,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '330'
+                            value: '357'
                             regular_expression: false
                           name: width
                           hidden: true
@@ -962,7 +821,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '358'
+                            value: '360'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -970,7 +829,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '319'
+                            value: '611'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -1034,7 +893,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '25'
+                            value: '26'
                             regular_expression: false
                           name: height
                           hidden: true
@@ -1066,7 +925,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '454'
+                            value: '456'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -1074,7 +933,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '320'
+                            value: '611'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -1084,7 +943,7 @@ object_repository:
                     custom_replay: ''
                     class: WebEdit
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -1133,7 +992,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '330'
+                            value: '357'
                             regular_expression: false
                           name: width
                           hidden: true
@@ -1141,7 +1000,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '-107'
+                            value: '165'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -1149,7 +1008,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '733'
+                            value: '1051'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -1213,7 +1072,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '25'
+                            value: '26'
                             regular_expression: false
                           name: height
                           hidden: true
@@ -1245,7 +1104,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '-11'
+                            value: '261'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -1253,7 +1112,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '734'
+                            value: '1051'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -1263,7 +1122,7 @@ object_repository:
                     custom_replay: ''
                     class: WebEdit
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -1312,7 +1171,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '330'
+                            value: '357'
                             regular_expression: false
                           name: width
                           hidden: true
@@ -1320,7 +1179,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '469'
+                            value: '509'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -1328,7 +1187,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '319'
+                            value: '611'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -1392,7 +1251,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '25'
+                            value: '26'
                             regular_expression: false
                           name: height
                           hidden: true
@@ -1424,7 +1283,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '565'
+                            value: '605'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -1432,7 +1291,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '320'
+                            value: '611'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -1442,7 +1301,7 @@ object_repository:
                     custom_replay: ''
                     class: WebEdit
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -1491,7 +1350,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '330'
+                            value: '357'
                             regular_expression: false
                           name: width
                           hidden: true
@@ -1499,7 +1358,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '300'
+                            value: '302'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -1507,7 +1366,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '733'
+                            value: '1051'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -1571,7 +1430,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '25'
+                            value: '26'
                             regular_expression: false
                           name: height
                           hidden: true
@@ -1603,7 +1462,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '396'
+                            value: '434'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -1611,7 +1470,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '734'
+                            value: '1051'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -1621,7 +1480,7 @@ object_repository:
                     custom_replay: ''
                     class: WebEdit
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -1670,7 +1529,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '330'
+                            value: '357'
                             regular_expression: false
                           name: width
                           hidden: true
@@ -1678,7 +1537,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '358'
+                            value: '360'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -1686,7 +1545,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '733'
+                            value: '1051'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -1750,7 +1609,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '25'
+                            value: '26'
                             regular_expression: false
                           name: height
                           hidden: true
@@ -1782,7 +1641,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '454'
+                            value: '456'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -1790,7 +1649,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '734'
+                            value: '1051'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -1800,7 +1659,7 @@ object_repository:
                     custom_replay: ''
                     class: WebEdit
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -1862,7 +1721,7 @@ object_repository:
                           type: BOOL
                       - property:
                           value:
-                            value: '347'
+                            value: '620'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -1870,7 +1729,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '319'
+                            value: '611'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -1934,7 +1793,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '443'
+                            value: '716'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -1942,7 +1801,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '320'
+                            value: '611'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -1952,7 +1811,159 @@ object_repository:
                     custom_replay: ''
                     class: WebCheckBox
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
+                    basic_identification:
+                      property_ref:
+                        - micclass
+                        - _xpath
+                        - type
+                        - name
+                        - html tag
+                      ordinal_identifier: ''
+                - object:
+                    smart_identification:
+                      base_filter:
+                        property_ref:
+                          - micclass
+                          - html tag
+                      optional_filter:
+                        property_ref:
+                          - name
+                          - type
+                          - html id
+                          - value
+                          - class
+                          - visible
+                      algorithm: Mercury.TolerantPriority
+                      active: true
+                    name: allowOffersPromotion
+                    child_objects: []
+                    properties:
+                      - property:
+                          value:
+                            value: WebCheckBox
+                            regular_expression: false
+                          name: micclass
+                          hidden: true
+                          read_only: true
+                          type: STRING
+                      - property:
+                          value:
+                            value: '//DIV[@id="formCover"]/DIV[4]/INPUT[1]'
+                            regular_expression: false
+                          name: _xpath
+                          hidden: true
+                          read_only: true
+                          type: STRING
+                      - property:
+                          value:
+                            value: '16'
+                            regular_expression: false
+                          name: width
+                          hidden: true
+                          read_only: true
+                          type: NUMBER
+                      - property:
+                          value:
+                            value: '-1'
+                            regular_expression: false
+                          name: visible
+                          hidden: true
+                          read_only: true
+                          type: BOOL
+                      - property:
+                          value:
+                            value: '583'
+                            regular_expression: false
+                          name: view_y
+                          hidden: true
+                          read_only: true
+                          type: NUMBER
+                      - property:
+                          value:
+                            value: '611'
+                            regular_expression: false
+                          name: view_x
+                          hidden: true
+                          read_only: true
+                          type: NUMBER
+                      - property:
+                          value:
+                            value: 'on'
+                            regular_expression: false
+                          name: value
+                          hidden: true
+                          read_only: true
+                          type: STRING
+                      - property:
+                          value:
+                            value: checkbox
+                            regular_expression: false
+                          name: type
+                          hidden: false
+                          read_only: false
+                          type: STRING
+                      - property:
+                          value:
+                            value: allowOffersPromotion
+                            regular_expression: false
+                          name: name
+                          hidden: false
+                          read_only: false
+                          type: STRING
+                      - property:
+                          value:
+                            value: INPUT
+                            regular_expression: false
+                          name: html tag
+                          hidden: false
+                          read_only: false
+                          type: STRING
+                      - property:
+                          value:
+                            value: ''
+                            regular_expression: false
+                          name: html id
+                          hidden: true
+                          read_only: true
+                          type: STRING
+                      - property:
+                          value:
+                            value: '16'
+                            regular_expression: false
+                          name: height
+                          hidden: true
+                          read_only: true
+                          type: NUMBER
+                      - property:
+                          value:
+                            value: ng-pristine ng-untouched ng-valid
+                            regular_expression: false
+                          name: class
+                          hidden: true
+                          read_only: true
+                          type: STRING
+                      - property:
+                          value:
+                            value: '679'
+                            regular_expression: false
+                          name: abs_y
+                          hidden: true
+                          read_only: true
+                          type: NUMBER
+                      - property:
+                          value:
+                            value: '611'
+                            regular_expression: false
+                          name: abs_x
+                          hidden: true
+                          read_only: true
+                          type: NUMBER
+                    comments: ''
+                    custom_replay: ''
+                    class: WebCheckBox
+                    visual_relations: ''
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -2015,7 +2026,7 @@ object_repository:
                           type: BOOL
                       - property:
                           value:
-                            value: '424'
+                            value: '697'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -2023,7 +2034,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '465'
+                            value: '786'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -2071,7 +2082,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '41'
+                            value: '42'
                             regular_expression: false
                           name: height
                           hidden: true
@@ -2095,7 +2106,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '520'
+                            value: '793'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -2103,7 +2114,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '466'
+                            value: '786'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -2113,7 +2124,7 @@ object_repository:
                     custom_replay: ''
                     class: WebButton
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -2184,7 +2195,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '1096'
+                            value: '1738'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -2256,7 +2267,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '107'
+                            value: '143'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -2264,7 +2275,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '1097'
+                            value: '1738'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -2274,7 +2285,7 @@ object_repository:
                     custom_replay: ''
                     class: Link
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -2336,7 +2347,7 @@ object_repository:
                           type: BOOL
                       - property:
                           value:
-                            value: '472'
+                            value: '490'
                             regular_expression: false
                           name: view_y
                           hidden: true
@@ -2344,7 +2355,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '455'
+                            value: '776'
                             regular_expression: false
                           name: view_x
                           hidden: true
@@ -2392,7 +2403,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '21'
+                            value: '22'
                             regular_expression: false
                           name: height
                           hidden: true
@@ -2416,7 +2427,7 @@ object_repository:
                           type: STRING
                       - property:
                           value:
-                            value: '568'
+                            value: '622'
                             regular_expression: false
                           name: abs_y
                           hidden: true
@@ -2424,7 +2435,7 @@ object_repository:
                           type: NUMBER
                       - property:
                           value:
-                            value: '456'
+                            value: '776'
                             regular_expression: false
                           name: abs_x
                           hidden: true
@@ -2434,7 +2445,7 @@ object_repository:
                     custom_replay: ''
                     class: Link
                     visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+                    last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
                     basic_identification:
                       property_ref:
                         - micclass
@@ -2442,169 +2453,6 @@ object_repository:
                         - text
                         - html tag
                       ordinal_identifier: ''
-                - object:
-                    smart_identification:
-                      base_filter:
-                        property_ref:
-                          - micclass
-                          - html tag
-                      optional_filter:
-                        property_ref:
-                          - alt
-                          - image type
-                          - html id
-                          - name
-                          - file name
-                          - class
-                          - visible
-                      algorithm: Mercury.TolerantPriority
-                      active: true
-                    name: Down_arrow
-                    child_objects: []
-                    properties:
-                      - property:
-                          value:
-                            value: Image
-                            regular_expression: false
-                          name: micclass
-                          hidden: true
-                          read_only: true
-                          type: STRING
-                      - property:
-                          value:
-                            value: '//A[@id="helpLink"]/IMG[1]'
-                            regular_expression: false
-                          name: _xpath
-                          hidden: true
-                          read_only: true
-                          type: STRING
-                      - property:
-                          value:
-                            value: '12'
-                            regular_expression: false
-                          name: width
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                      - property:
-                          value:
-                            value: '-1'
-                            regular_expression: false
-                          name: visible
-                          hidden: true
-                          read_only: true
-                          type: BOOL
-                      - property:
-                          value:
-                            value: '20'
-                            regular_expression: false
-                          name: view_y
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                      - property:
-                          value:
-                            value: '1225'
-                            regular_expression: false
-                          name: view_x
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                      - property:
-                          value:
-                            value: Image
-                            regular_expression: false
-                          name: name
-                          hidden: true
-                          read_only: true
-                          type: STRING
-                      - property:
-                          value:
-                            value: Image Link
-                            regular_expression: false
-                          name: image type
-                          hidden: false
-                          read_only: false
-                          type: STRING
-                      - property:
-                          value:
-                            value: IMG
-                            regular_expression: false
-                          name: html tag
-                          hidden: false
-                          read_only: false
-                          type: STRING
-                      - property:
-                          value:
-                            value: ''
-                            regular_expression: false
-                          name: html id
-                          hidden: true
-                          read_only: true
-                          type: STRING
-                      - property:
-                          value:
-                            value: '25'
-                            regular_expression: false
-                          name: height
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                      - property:
-                          value:
-                            value: Down_arrow.svg
-                            regular_expression: false
-                          name: file name
-                          hidden: true
-                          read_only: true
-                          type: STRING
-                      - property:
-                          value:
-                            value: ''
-                            regular_expression: false
-                          name: class
-                          hidden: true
-                          read_only: true
-                          type: STRING
-                      - property:
-                          value:
-                            value: ''
-                            regular_expression: false
-                          name: alt
-                          hidden: false
-                          read_only: false
-                          type: STRING
-                      - property:
-                          value:
-                            value: '116'
-                            regular_expression: false
-                          name: abs_y
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                      - property:
-                          value:
-                            value: '1226'
-                            regular_expression: false
-                          name: abs_x
-                          hidden: true
-                          read_only: true
-                          type: NUMBER
-                    comments: ''
-                    custom_replay: ''
-                    class: Image
-                    visual_relations: ''
-                    last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
-                    basic_identification:
-                      property_ref:
-                        - micclass
-                        - _xpath
-                        - image type
-                        - html tag
-                        - alt
-                      ordinal_identifier:
-                        value: 0
-                        type: index
               properties:
                 - property:
                     value:
@@ -2672,7 +2520,7 @@ object_repository:
                     type: STRING
                 - property:
                     value:
-                      value: '10006'
+                      value: '10005'
                       regular_expression: false
                     name: index
                     hidden: true
@@ -2706,7 +2554,7 @@ object_repository:
               custom_replay: ''
               class: Page
               visual_relations: ''
-              last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+              last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
               basic_identification:
                 property_ref:
                   - micclass
@@ -2780,12 +2628,12 @@ object_repository:
         custom_replay: ''
         class: Browser
         visual_relations: ''
-        last_update_time: 'Thursday, December 17, 2020 4:01:28 AM'
+        last_update_time: 'Thursday, January 21, 2021 5:37:32 AM'
         basic_identification:
           property_ref:
             - micclass
           ordinal_identifier:
-            value: 1
+            value: 2
             type: creationtime
   check_points_and_outputs: []
   parameters: []

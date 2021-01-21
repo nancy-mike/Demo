@@ -1,9 +1,9 @@
-namespace: lab_action
+namespace: wed_action
 flow:
-  name: from_excel
+  name: register_users_from_excel
   inputs:
-    - excel_path: "C:\\Users\\Administrator\\Desktop\\users.xlsx"
-    - sheet: sheet1
+    - excel_path: "C:\\\\Users\\\\Administrator\\\\Desktop\\\\users.xlsx"
+    - sheet: Sheet1
     - login_header: Username
     - password_header: Password
     - name_header: Full Name
@@ -16,7 +16,7 @@ flow:
             - worksheetName: '${sheet}'
             - hasHeader: 'Yes'
             - firstRowIndex: '0'
-            - rowIndex: '0:100'
+            - rowIndex: '0:1000'
             - columnIndex: '0:100'
             - rowDelimiter: '|'
             - columnDelimiter: ','
@@ -33,16 +33,16 @@ flow:
           - name_index: "${str(header.split(',').index(name_header))}"
         navigate:
           - failure: on_failure
-          - success: lab_account_flow
-    - lab_account_flow:
+          - success: register_account_flow
+    - register_account_flow:
         loop:
           for: 'row in data.split("|")'
           do:
-            lab_action.lab_account_flow:
+            wed_action.register_account_flow:
               - username: '${row.split(",")[int(login_index)]}'
-              - firnammee: '${row.split(",")[int(name_index)].split()[0]}'
-              - last_name: '${row.split(",")[int(name_index)].split()[-1]}'
               - password: '${row.split(",")[int(password_index)]}'
+              - first_name: '${row.split(",")[int(name_index)].split()[0]}'
+              - last_name: '${row.split(",")[int(name_index)].split()[-1]}'
               - email: '${row.split(",")[int(email_index)]}'
           break:
             - FAILURE
@@ -56,17 +56,17 @@ extensions:
   graph:
     steps:
       Get_Cell:
-        x: 45
-        'y': 154
-      lab_account_flow:
-        x: 261
-        'y': 60
+        x: 350
+        'y': 237
+      register_account_flow:
+        x: 536.7578125
+        'y': 256.78515625
         navigate:
-          2102475b-35f6-47a5-1f04-eb1a5774814c:
-            targetId: a0362951-c608-1ff5-4ca6-95008d688f06
+          4081729b-144a-9e10-3eaf-d0c5f8f05d82:
+            targetId: 9119e178-6789-484b-ed4f-e3e30b56016e
             port: SUCCESS
     results:
       SUCCESS:
-        a0362951-c608-1ff5-4ca6-95008d688f06:
-          x: 490
-          'y': 148
+        9119e178-6789-484b-ed4f-e3e30b56016e:
+          x: 741
+          'y': 233
