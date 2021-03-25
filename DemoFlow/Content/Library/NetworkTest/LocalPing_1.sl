@@ -1,6 +1,6 @@
 namespace: NetworkTest
 flow:
-  name: LocalPing
+  name: LocalPing_1
   workflow:
     - run_command:
         do:
