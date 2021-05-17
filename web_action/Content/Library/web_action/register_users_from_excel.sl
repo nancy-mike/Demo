@@ -56,11 +56,11 @@ extensions:
   graph:
     steps:
       Get_Cell:
-        x: 224.7578125
-        'y': 114.0234375
+        x: 222
+        'y': 136
       register_account_flow:
-        x: 436.7578125
-        'y': 277.78515625
+        x: 408
+        'y': 129
         navigate:
           a0be8ca4-b4e5-e302-1096-87525c1295e1:
             targetId: 4516a033-8fce-422f-0350-6f5ad575e925
@@ -68,5 +68,5 @@ extensions:
     results:
       SUCCESS:
         4516a033-8fce-422f-0350-6f5ad575e925:
-          x: 591.7578125
-          'y': 54.78515625
+          x: 594
+          'y': 125

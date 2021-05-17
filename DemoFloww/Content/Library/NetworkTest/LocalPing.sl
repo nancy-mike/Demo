@@ -16,14 +16,14 @@ extensions:
   graph:
     steps:
       run_command:
-        x: 378.7578125
-        'y': 280.0234375
+        x: 233
+        'y': 50
         navigate:
-          71600b43-28db-906f-b126-c369600df12a:
-            targetId: b058c046-51a6-7fe3-0f64-b2cb3eec2893
+          ed4edcae-4d4e-9c91-6d27-4c189b83ebfd:
+            targetId: 5c6c7e80-1b8f-1510-e137-7ff5dd11181c
             port: SUCCESS
     results:
       SUCCESS:
-        b058c046-51a6-7fe3-0f64-b2cb3eec2893:
-          x: 838.7578125
-          'y': 261.78515625
+        5c6c7e80-1b8f-1510-e137-7ff5dd11181c:
+          x: 450
+          'y': 56
