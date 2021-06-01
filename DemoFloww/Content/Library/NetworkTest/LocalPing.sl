@@ -5,7 +5,7 @@ flow:
     - run_command:
         do:
           io.cloudslang.base.cmd.run_command:
-            - command: ipconfigy
+            - command: ipconfig
         navigate:
           - SUCCESS: SUCCESS
           - FAILURE: on_failure
