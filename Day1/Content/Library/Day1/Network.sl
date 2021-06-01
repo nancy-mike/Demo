@@ -1,6 +1,6 @@
-namespace: NetworkTest
+namespace: Day1
 flow:
-  name: LocalPing
+  name: Network
   workflow:
     - run_command:
         do:
@@ -16,14 +16,14 @@ extensions:
   graph:
     steps:
       run_command:
-        x: 247.7578125
-        'y': 104.0234375
+        x: 258
+        'y': 254
         navigate:
-          bb5c7aeb-cc32-4ad2-77ab-db034e0aac15:
-            targetId: 31102578-38b0-b961-a9fb-711e26751c6d
+          b92d6706-f68b-be22-6c2a-98423a68fd5d:
+            targetId: b0e7e508-dec3-605c-8fc4-413cfa73653f
             port: SUCCESS
     results:
       SUCCESS:
-        31102578-38b0-b961-a9fb-711e26751c6d:
-          x: 477.7578125
-          'y': 106.78515625
+        b0e7e508-dec3-605c-8fc4-413cfa73653f:
+          x: 572
+          'y': 254

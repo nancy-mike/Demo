@@ -1,6 +1,6 @@
 namespace: NetworkTest
 flow:
-  name: LocalPing
+  name: LocalPingCgl
   workflow:
     - run_command:
         do:
@@ -16,14 +16,14 @@ extensions:
   graph:
     steps:
       run_command:
-        x: 233
-        'y': 50
+        x: 300
+        'y': 147
         navigate:
-          ed4edcae-4d4e-9c91-6d27-4c189b83ebfd:
-            targetId: 5c6c7e80-1b8f-1510-e137-7ff5dd11181c
+          2455aee5-3f35-4324-48d2-e95ee9fc756f:
+            targetId: 9ad2858d-6f59-136e-f2b7-8fe22d1fc441
             port: SUCCESS
     results:
       SUCCESS:
-        5c6c7e80-1b8f-1510-e137-7ff5dd11181c:
-          x: 450
-          'y': 56
+        9ad2858d-6f59-136e-f2b7-8fe22d1fc441:
+          x: 676
+          'y': 146
